@@ -1,0 +1,315 @@
+/* ============================================================
+   Quizz
+   ============================================================ */
+
+:root {
+  --juste: #4fc99a;
+}
+
+.liste-themes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.theme {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 16px 18px;
+  text-align: left;
+  background: var(--carte);
+  border: 1px solid var(--bordure);
+  border-radius: var(--rayon);
+  transition: background 0.2s, border-color 0.2s, transform 0.1s;
+}
+
+.theme:hover {
+  background: var(--carte-survol);
+  border-color: var(--or);
+}
+
+.theme:active {
+  transform: scale(0.985);
+}
+
+.theme--mixte {
+  background: linear-gradient(160deg, rgba(217, 179, 108, 0.2), rgba(217, 179, 108, 0.05));
+  border-color: var(--or);
+}
+
+.theme__corps {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.theme__titre {
+  font-family: var(--police-titre);
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.theme__description {
+  font-size: 0.85rem;
+  color: var(--texte-doux);
+}
+
+.theme__meta {
+  margin-top: 4px;
+  font-size: 0.75rem;
+  color: var(--or);
+}
+
+.theme__fleche {
+  color: var(--or);
+}
+
+/* ---------- Question ---------- */
+
+.quizz-haut {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--texte-doux);
+}
+
+.quizz-haut__score {
+  font-weight: 500;
+  color: var(--or-clair);
+}
+
+.barre {
+  height: 6px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+}
+
+.barre__remplie {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--or), var(--or-clair));
+  border-radius: inherit;
+  transition: width 0.4s ease;
+}
+
+.question {
+  padding: 6px 4px 2px;
+  font-family: var(--police-titre);
+  font-size: 1.65rem;
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: center;
+  animation: apparition 0.35s ease both;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 56px;
+  padding: 12px 14px;
+  text-align: left;
+  background: var(--carte);
+  border: 1px solid var(--bordure);
+  border-radius: 16px;
+  transition: background 0.2s, border-color 0.2s, opacity 0.2s, transform 0.1s;
+}
+
+.option:hover:not(:disabled) {
+  background: var(--carte-survol);
+  border-color: var(--or);
+}
+
+.option:active:not(:disabled) {
+  transform: scale(0.985);
+}
+
+.option:disabled {
+  cursor: default;
+}
+
+.option__lettre {
+  display: grid;
+  flex: 0 0 30px;
+  height: 30px;
+  place-items: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--or);
+  border: 1px solid var(--bordure);
+  border-radius: 50%;
+}
+
+.option__texte {
+  flex: 1;
+  line-height: 1.35;
+}
+
+.option__icone {
+  display: grid;
+  place-items: center;
+}
+
+.option--juste {
+  background: rgba(79, 201, 154, 0.16);
+  border-color: var(--juste);
+}
+
+.option--juste .option__lettre {
+  color: var(--fond);
+  background: var(--juste);
+  border-color: var(--juste);
+}
+
+.option--fausse {
+  background: rgba(229, 143, 125, 0.14);
+  border-color: var(--danger);
+}
+
+.option--fausse .option__lettre {
+  color: var(--fond);
+  background: var(--danger);
+  border-color: var(--danger);
+}
+
+.option--eteinte {
+  opacity: 0.5;
+}
+
+.retour {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  text-align: center;
+  border: 1px solid var(--bordure);
+  border-radius: var(--rayon);
+  animation: apparition 0.3s ease both;
+}
+
+.retour--juste {
+  background: rgba(79, 201, 154, 0.12);
+  border-color: var(--juste);
+}
+
+.retour--faux {
+  background: rgba(229, 143, 125, 0.1);
+  border-color: var(--danger);
+}
+
+.retour__titre {
+  font-weight: 600;
+}
+
+.retour__texte {
+  margin-bottom: 6px;
+  font-size: 0.92rem;
+  color: var(--texte-doux);
+}
+
+/* ---------- Résultat ---------- */
+
+.resultat {
+  position: relative;
+  display: grid;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 34px;
+  place-items: center;
+}
+
+.resultat__anneau {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.resultat__fond {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-width: 8;
+}
+
+.resultat__valeur {
+  fill: none;
+  stroke: var(--or);
+  stroke-width: 8;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.8s ease;
+}
+
+.resultat__score {
+  font-family: var(--police-titre);
+  font-size: 3.4rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--or-clair);
+}
+
+.resultat__score span {
+  font-size: 1.4rem;
+  color: var(--texte-doux);
+}
+
+.resultat__record {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.78rem;
+  white-space: nowrap;
+  color: var(--texte-doux);
+}
+
+.revision__titre {
+  margin-bottom: 10px;
+  font-family: var(--police-titre);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.revision__liste {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.revision__item {
+  padding: 14px;
+  background: var(--carte);
+  border: 1px solid var(--bordure);
+  border-radius: 16px;
+}
+
+.revision__question {
+  font-size: 0.9rem;
+  color: var(--texte-doux);
+}
+
+.revision__reponse {
+  margin-top: 4px;
+  font-weight: 600;
+  color: var(--juste);
+}
+
+.revision__explication {
+  margin-top: 4px;
+  font-size: 0.85rem;
+  color: var(--texte-doux);
+}

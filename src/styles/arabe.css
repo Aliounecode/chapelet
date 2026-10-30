@@ -1,0 +1,223 @@
+/* ============================================================
+   Arabe (écriture de Hafs), tajwid en couleurs, légende, réglages
+   ============================================================ */
+
+:root {
+  --arabe-echelle: 1;
+  --harakat: #e3b866; /* voyelles : fatha, damma, kasra, sukun… */
+
+  /* Couleurs du tajwid */
+  --tj-madd-tabii: #f7a24b;
+  --tj-madd: #ff6b6b;
+  --tj-madd-lazim: #f0577f;
+  --tj-ghunna: #5ddf7a;
+  --tj-ikhfa: #52b2ff;
+  --tj-idgham-ghunna: #b98cff;
+  --tj-idgham: #5fe0d0;
+  --tj-iqlab: #ff8fd0;
+  --tj-qalqala: #ffe066;
+  --tj-muet: #6f8a82;
+}
+
+.arabe {
+  font-family: var(--police-arabe);
+  color: var(--ivoire);
+  font-weight: 500;
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
+}
+
+.harakat {
+  color: var(--harakat);
+}
+
+.tj-madd-tabii { color: var(--tj-madd-tabii); }
+.tj-madd { color: var(--tj-madd); }
+.tj-madd-lazim { color: var(--tj-madd-lazim); }
+.tj-ghunna { color: var(--tj-ghunna); }
+.tj-ikhfa { color: var(--tj-ikhfa); }
+.tj-idgham-ghunna { color: var(--tj-idgham-ghunna); }
+.tj-idgham { color: var(--tj-idgham); }
+.tj-iqlab { color: var(--tj-iqlab); }
+.tj-qalqala { color: var(--tj-qalqala); }
+.tj-muet { color: var(--tj-muet); }
+
+/* ---------- Tailles de l'arabe (réglable : × --arabe-echelle) ---------- */
+
+.invocation__arabe {
+  font-size: calc(clamp(2.1rem, 9vw, 2.8rem) * var(--arabe-echelle));
+  line-height: 2.1;
+}
+
+.invocation__arabe--longue {
+  font-size: calc(clamp(1.6rem, 6.4vw, 2.1rem) * var(--arabe-echelle));
+  line-height: 2.2;
+}
+
+.carte__arabe {
+  flex: 0 0 112px;
+  font-size: calc(1.45rem * var(--arabe-echelle));
+  line-height: 1.9;
+}
+
+.tuile__arabe {
+  font-size: calc(1.8rem * var(--arabe-echelle));
+  line-height: 1.9;
+}
+
+.nom-du-jour__arabe {
+  font-size: calc(3.1rem * var(--arabe-echelle));
+  line-height: 1.8;
+}
+
+.fiche__arabe {
+  font-size: calc(clamp(3.2rem, 16vw, 4.6rem) * var(--arabe-echelle));
+  line-height: 1.8;
+}
+
+.hadith__arabe {
+  font-size: calc(1.85rem * var(--arabe-echelle));
+  line-height: 2.3;
+}
+
+/* ---------- Légende du tajwid ---------- */
+
+.legende {
+  padding: 0 16px;
+  background: var(--carte);
+  border: 1px solid var(--bordure);
+  border-radius: 16px;
+}
+
+.legende summary {
+  padding: 12px 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--or-clair);
+  cursor: pointer;
+}
+
+.legende__liste {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 14px;
+  padding-bottom: 12px;
+}
+
+.legende__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.78rem;
+  line-height: 1.3;
+}
+
+.legende__pastille {
+  flex: 0 0 12px;
+  height: 12px;
+  margin-top: 2px;
+  border-radius: 50%;
+}
+
+.legende__detail {
+  color: var(--texte-doux);
+}
+
+.legende__note {
+  padding-bottom: 14px;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  color: var(--texte-doux);
+}
+
+/* ---------- Feuille des réglages ---------- */
+
+.fiche--reglages {
+  align-items: stretch;
+  gap: 14px;
+  text-align: left;
+}
+
+.reglages-titre {
+  padding-right: 52px;
+  font-family: var(--police-titre);
+  font-size: 1.9rem;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.reglage {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.reglage__libelle {
+  font-weight: 500;
+}
+
+.reglage__description {
+  font-size: 0.8rem;
+  color: var(--texte-doux);
+}
+
+.reglage__choix {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.reglage__apercu {
+  padding-top: 2px;
+  font-size: calc(1.7rem * var(--arabe-echelle));
+  line-height: 2.1;
+  text-align: center;
+}
+
+.reglage--interrupteur {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  width: 100%;
+  padding: 12px 14px;
+  text-align: left;
+  background: var(--carte);
+  border: 1px solid var(--bordure);
+  border-radius: 16px;
+}
+
+.reglage__texte {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.interrupteur {
+  position: relative;
+  flex: 0 0 46px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  transition: background 0.2s;
+}
+
+.interrupteur--actif {
+  background: var(--or);
+}
+
+.interrupteur__bouton {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s;
+}
+
+.interrupteur--actif .interrupteur__bouton {
+  transform: translateX(18px);
+}
