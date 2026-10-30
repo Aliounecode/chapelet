@@ -11,6 +11,7 @@ import Noms from "./pages/Noms.jsx";
 import Hadiths from "./pages/Hadiths.jsx";
 import Quizz from "./pages/Quizz.jsx";
 import PiedDePage from "./composants/PiedDePage.jsx";
+import { Analytics } from "@vercel/analytics/next";
 
 const onglets = [
   {
@@ -129,6 +130,7 @@ export default function App() {
             onFermer={() => setReglagesOuverts(false)}
           />
         ) : null}
+        <Analytics />
       </div>
     </ReglagesContext.Provider>
   );
